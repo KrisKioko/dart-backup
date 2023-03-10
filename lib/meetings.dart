@@ -2,6 +2,9 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, unused_local_variable, prefer_typing_uninitialized_variables, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:tutorial_006/components/buttons.dart';
+import 'package:tutorial_006/util/color.dart';
+import 'package:tutorial_006/util/theme.dart';
 
 void main() {
   runApp(const Meetings());

@@ -1,97 +1,85 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Language());
+  runApp(const Languages());
 }
 
-class Language extends StatelessWidget {
-  const Language({super.key});
+class Languages extends StatelessWidget {
+  const Languages({super.key});
+
+  @override
+  Widget build(BuildContext context){
+    return const MaterialApp(
+      home: LanguagesApp(),
+    );
+  }
+}
+
+class LanguagesApp extends StatefulWidget {
+  const LanguagesApp({super.key});
+
+  @override
+  State<LanguagesApp> createState() => _LanguagesApp();
+}
+
+class _LanguagesApp extends State<LanguagesApp> {
+  String? _selected;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text(
-            'Language',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 16
-            ),
+          title: const Text('Language'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ListTile(
+                leading: const Text('English(US)'),
+                trailing: Radio<String>(
+                  value: 'English(US)',
+                  groupValue: _selected,
+                  onChanged: (value) {
+                    setState(() {
+                      _selected = value!;
+                    });
+                  },
+                ),
+              ),
+
+              ListTile(
+                leading: const Text('English(UK)'),
+                trailing: Radio<String>(
+                  value: 'English(UK)',
+                  groupValue: _selected,
+                  onChanged: (value) {
+                    setState(() {
+                      _selected = value!;
+                    });
+                  },
+                ),
+              ),
+
+              ListTile(
+                leading: const Text('Swahili'),
+                trailing: Radio<String>(
+                  value: 'Swahili',
+                  groupValue: _selected,
+                  onChanged: (value) {
+                    setState(() {
+                      _selected = value!;
+                    });
+                  },
+                ),
+              ),
+            ],
           ),
         ),
-
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Center(
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: ListTile(
-                      leading: Text(
-                        'English(US)',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                        ),
-                      ),
-                      trailing: RadioButton(),
-                    ),
-                  ),
-
-                  SizedBox(height: 5),
-
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: ListTile(
-                      leading: Text(
-                        'English(UK)',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                        ),
-                      ),
-                      trailing: RadioButton(),
-                    ),
-                  ),
-
-                  SizedBox(height: 5),
-
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: ListTile(
-                      leading: Text(
-                        'Swahili',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                        ),
-                      ),
-                      trailing: RadioButton(),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          )
-        ),
-      ),
+      ), 
     );
   }
 }
 
-class RadioButton extends StatefulWidget {
-  const RadioButton({super.key});
-
-  @override
-  State<RadioButton> createState() => _RadioButton;
-}
-
-class _RadioButton extends State<RadioButton> {
-  
-}

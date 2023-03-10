@@ -211,7 +211,7 @@ class _SettingsState extends State<Settings> {
                     ],
                   ),
                 ),
-                                Padding(
+                Padding(
                   padding: const EdgeInsets.all(10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
